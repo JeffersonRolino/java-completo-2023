@@ -39,5 +39,7 @@ public class Exercise_06 {
         System.out.printf("TRAPÉZIO: %.3f%n", c);
         System.out.printf("QUADRADO: %.3f%n", d);
         System.out.printf("RETÂNGULO: %.3f%n", e);
+
+        sc.close();
     }
 }

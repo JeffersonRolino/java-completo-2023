@@ -37,5 +37,7 @@ public class Exercise_05 {
         double totalPedido = totalPeca1 + totalPeca2;
 
         System.out.printf("VALOR A PAGAR: R$%.2f%n", totalPedido);
+
+        sc.close();
     }
 }

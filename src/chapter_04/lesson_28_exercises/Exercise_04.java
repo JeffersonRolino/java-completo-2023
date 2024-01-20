@@ -30,6 +30,8 @@ public class Exercise_04 {
 
         System.out.printf("NUMBER = %s%n", number);
         System.out.printf("SALARY = U$%.2f%n", salary);
+
+        sc.close();
     }
 }
 
