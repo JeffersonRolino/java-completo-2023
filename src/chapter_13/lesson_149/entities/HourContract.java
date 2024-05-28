@@ -7,6 +7,11 @@ public class HourContract {
     private Double valuePerHour;
     private Integer hours;
 
+
+    //***********************************************************************************************
+    // CONSTRUCTORS
+    //***********************************************************************************************
+
     public HourContract(){}
 
     public HourContract(LocalDate date, Double valuePerHour, Integer hours) {
@@ -14,6 +19,11 @@ public class HourContract {
         this.valuePerHour = valuePerHour;
         this.hours = hours;
     }
+
+
+    //***********************************************************************************************
+    // GETTERS AND SETTERS
+    //***********************************************************************************************
 
     public LocalDate getDate() {
         return date;
@@ -38,6 +48,11 @@ public class HourContract {
     public void setHours(Integer hours) {
         this.hours = hours;
     }
+
+
+    //***********************************************************************************************
+    // METHODS
+    //***********************************************************************************************
 
     public double totalValue() {
         return this.valuePerHour * this.hours;
