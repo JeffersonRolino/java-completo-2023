@@ -45,7 +45,7 @@ public class Reservation {
     // METHODS
     //**************************************************************************************
     public Integer duration(){
-        Duration duration = Duration.between(getCheckIn(), getCheckOut());
+        Duration duration = Duration.between(getCheckIn().atStartOfDay(), getCheckOut().atStartOfDay());
         return (int)duration.toDays();
     }
 
