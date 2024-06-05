@@ -1,9 +1,11 @@
 package chapter_15.hostel_project.application;
 
 import chapter_15.hostel_project.model.entities.Reservation;
+import chapter_15.hostel_project.model.exceptions.DomainException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -13,18 +15,16 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        System.out.print("Room number: ");
-        int roomNumber = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Check-in date (dd/MM/yyyy): ");
-        LocalDate checkInDate = LocalDate.parse(scanner.nextLine(), dateTimeFormatter);
-        System.out.print("Check-out date (dd/MM/yyyy): ");
-        LocalDate checkOutDate = LocalDate.parse(scanner.nextLine(), dateTimeFormatter);
+        try {
+            System.out.print("Room number: ");
+            int roomNumber = scanner.nextInt();
+            scanner.nextLine();
+            System.out.print("Check-in date (dd/MM/yyyy): ");
+            LocalDate checkInDate = LocalDate.parse(scanner.nextLine(), dateTimeFormatter);
+            System.out.print("Check-out date (dd/MM/yyyy): ");
+            LocalDate checkOutDate = LocalDate.parse(scanner.nextLine(), dateTimeFormatter);
 
-        if(!checkOutDate.isAfter(checkInDate)){
-            System.out.println("Error in reservation: Check-out date must be after check-in date");
-        }
-        else {
+
             Reservation reservation = new Reservation(roomNumber, checkInDate, checkOutDate);
             System.out.println("Reservation: " + reservation);
 
@@ -35,14 +35,20 @@ public class Main {
             System.out.print("Check-out date (dd/MM/yyyy): ");
             checkOutDate = LocalDate.parse(scanner.nextLine(), dateTimeFormatter);
 
-            String error = reservation.updateDates(checkInDate, checkOutDate);
-            if(error != null){
-                System.out.println("Error in reservation: " + error);
-            }
-            else {
-                System.out.println("Reservation: " + reservation);
-            }
+            reservation.updateDates(checkInDate, checkOutDate);
+            System.out.println("Reservation: " + reservation);
         }
+        catch (DomainException exception){
+            System.out.println("Error in reservation: " + exception.getMessage());
+        }
+        catch (InputMismatchException exception){
+            System.out.println("Error in reservation: The room number must be a number");
+        }
+        catch (Exception exception){
+            System.out.println("Unexpected error!");
+        }
+
+        System.out.println("\nGodbye!");
 
         scanner.close();
     }
