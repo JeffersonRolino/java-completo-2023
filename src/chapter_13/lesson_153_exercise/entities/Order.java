@@ -87,8 +87,8 @@ public class Order {
     public String toString(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("\n").append("ORDER SUMMARY:").append("\n");
-        stringBuilder.append("Order moment: ").append(moment.format(dateTimeFormatter)).append("\n")
-                .append("Order status: ").append(status).append("\n")
+        stringBuilder.append("OrderItem moment: ").append(moment.format(dateTimeFormatter)).append("\n")
+                .append("OrderItem status: ").append(status).append("\n")
                 .append(client.toString()).append("\n");
         for (OrderItem item : items){
             stringBuilder.append(item.toString()).append("\n");

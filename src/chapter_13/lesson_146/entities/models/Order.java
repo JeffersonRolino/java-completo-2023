@@ -31,7 +31,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
+        return "OrderItem{" +
                 "id=" + id +
                 ", moment=" + moment +
                 ", status=" + status +
