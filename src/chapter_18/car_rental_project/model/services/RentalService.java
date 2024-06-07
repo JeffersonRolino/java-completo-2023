@@ -6,14 +6,14 @@ import chapter_18.car_rental_project.model.entities.Invoice;
 import java.time.Duration;
 
 public class RentalService {
-    private Double pricePerHour;
-    private Double pricePerDay;
-    private BrazilTaxService taxService;
+    private final Double pricePerHour;
+    private final Double pricePerDay;
+    private final TaxService taxService;
 
     //************************************************************************
     // CONSTRUTORS
     //************************************************************************
-    public RentalService(Double pricePerHour, Double pricePerDay, BrazilTaxService taxService) {
+    public RentalService(Double pricePerHour, Double pricePerDay, TaxService taxService) {
         this.pricePerHour = pricePerHour;
         this.pricePerDay = pricePerDay;
         this.taxService = taxService;
