@@ -22,11 +22,15 @@ public class ContractService {
         double baseValue = contract.getTotalValue() / months;
 
         for (int i = 1; i <= months; i++) {
-            LocalDate date = contract.getDate().plusDays((long)i * 30);
-            Double amount = baseValue + (i * onlinePaymentService.paymentFee(baseValue));
-            amount += onlinePaymentService.interest(amount, i);
+            LocalDate date = contract.getDate().plusMonths(i);
 
-            Installment installment = new Installment(date, amount);
+            Double interest = onlinePaymentService.interest(baseValue, i);
+            Double valueWithInterest = baseValue + interest;
+
+            Double tax = onlinePaymentService.paymentFee(valueWithInterest);
+            Double finalValue = valueWithInterest + tax;
+
+            Installment installment = new Installment(date, finalValue);
 
             contract.addInstallment(installment);
         }
