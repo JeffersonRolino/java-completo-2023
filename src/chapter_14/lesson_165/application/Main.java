@@ -22,7 +22,7 @@ public class Main {
         List<Shape> shapes = new ArrayList<>();
 
         for(int i=1; i<=n; i++){
-            System.out.println("Shape #" + i + " data:");
+            System.out.println("AbstractShape #" + i + " data:");
             System.out.print("Rectangle or Circle (r/c)? ");
             char shapeType = scanner.next().charAt(0);
             System.out.print("Color (BLACK/BLUE/RED): ");
@@ -49,7 +49,7 @@ public class Main {
                 shapes.add(circle);
             }
             else {
-                System.out.println("Shape type invalid...");
+                System.out.println("AbstractShape type invalid...");
                 break;
             }
         }
