@@ -57,4 +57,32 @@ public class DB {
             }
         }
     }
+
+    /**
+     * Closes a Result Set if open.
+     * @param resultSet
+     */
+    public static void closeResultSet(ResultSet resultSet){
+        if(resultSet != null){
+            try {
+                resultSet.close();
+            } catch (SQLException exception) {
+                throw new DbException(exception.getMessage());
+            }
+        }
+    }
+
+    /**
+     * Closes a Statement if open.
+     * @param statement
+     */
+    public static void closeStatement(Statement statement){
+        if(statement != null){
+            try {
+                statement.close();
+            } catch (SQLException exception) {
+                throw new DbException(exception.getMessage());
+            }
+        }
+    }
 }
