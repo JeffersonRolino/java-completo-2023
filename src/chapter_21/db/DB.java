@@ -9,6 +9,10 @@ public class DB {
 
     private static Connection connection = null;
 
+    /**
+     * Load properties like user, password and dburl from the file db.properties
+     * @return
+     */
     private static Properties loadProperties(){
         try(FileInputStream fileInputStream = new FileInputStream("db.properties")){
             Properties properties = new Properties();
@@ -20,6 +24,10 @@ public class DB {
         }
     }
 
+    /**
+     * Establishes a connection with the dabase from db.properties file
+     * @return
+     */
     public static Connection getConnection() {
         if(connection == null){
             Properties properties = loadProperties();
@@ -36,30 +44,14 @@ public class DB {
         return connection;
     }
 
+    /**
+     * Closes the connection with the dabase from db.properties file
+     * @return
+     */
     public static void closeConnection(){
         if(connection != null){
             try {
                 connection.close();
-            } catch (SQLException exception) {
-                throw new DbException(exception.getMessage());
-            }
-        }
-    }
-
-    public static void closeStatement(Statement statement){
-        if(statement != null){
-            try {
-                statement.close();
-            } catch (SQLException exception) {
-                throw new DbException(exception.getMessage());
-            }
-        }
-    }
-
-    public static void closeResultSet(ResultSet resultSet){
-        if(resultSet != null){
-            try {
-                resultSet.close();
             } catch (SQLException exception) {
                 throw new DbException(exception.getMessage());
             }
